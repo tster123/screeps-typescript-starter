@@ -4,7 +4,7 @@ import { CreepMem } from "./CreepMem";
 export class Builder extends BaseCreepBehavior {
 
   public getSpawnDesire(currentEnergy: number): number {
-    return this.Creeps.length < 2 ? 0.5 : 0;
+    return 0.3 - 0.3 * (this.Creeps.length / 2); // up to 2, less important the more we have
   }
   public spawn(spawn: StructureSpawn, name: string): boolean {
     const opts: SpawnOptions = { memory: new CreepMem("builder") };
