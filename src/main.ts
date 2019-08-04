@@ -1,3 +1,5 @@
+import { CreepManager } from "creep/CreepManager";
+import { Construction } from "spawn/Construction";
 import { ErrorMapper } from "utils/ErrorMapper";
 
 // When compiling TS to JS and bundling with rollup, the line numbers and file names in error messages change
@@ -11,4 +13,7 @@ export const loop = ErrorMapper.wrapLoop(() => {
       delete Memory.creeps[name];
     }
   }
+
+  new CreepManager().run();
+  new Construction().run();
 });
