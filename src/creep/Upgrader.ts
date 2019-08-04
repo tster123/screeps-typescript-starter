@@ -1,4 +1,5 @@
 import { BaseCreepBehavior } from "./BaseCreepBehavior";
+import { CreepMem } from "./CreepMem";
 
 export class Upgrader extends BaseCreepBehavior {
 
@@ -6,8 +7,7 @@ export class Upgrader extends BaseCreepBehavior {
         return 0.8 - 0.8 * (this.Creeps.length / 2); // up to 2, less important the more we have
     }
     public spawn(spawn: StructureSpawn, name: string): boolean {
-        const opts: SpawnOptions = {};
-        opts.memory = new CreepMem("upgrader");
+        const opts: SpawnOptions = { memory: new CreepMem("upgrader") };
         return OK === spawn.spawnCreep([WORK, CARRY, MOVE], name + " the Upgrader", opts);
     }
 

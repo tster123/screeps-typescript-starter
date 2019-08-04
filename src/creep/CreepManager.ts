@@ -1,3 +1,4 @@
+import { CreepSpawner } from "spawn/CreepSpawner";
 import { BaseCreepBehavior } from "./BaseCreepBehavior";
 import { Builder } from "./Builder";
 import { Harvester } from "./Harvester";
@@ -15,6 +16,7 @@ export class CreepManager {
     public run() {
         this.addCreeps();
         this.commandCreeps();
+        new CreepSpawner(this.handlers).spawn();
     }
 
     private addCreeps() {

@@ -2,15 +2,15 @@ import { BaseCreepBehavior } from "creep/BaseCreepBehavior";
 
 export class CreepSpawner {
 
-    private handlers: BaseCreepBehavior[];
+    private handlers = new Map<string, BaseCreepBehavior>();
     private names = ['Fred', 'Tom', 'Sally', 'Bob', 'Alicia', 'John', 'Katy', 'Jim', 'Gary', 'Angela', 'Stephanie', 'Danielle', 'Tyler', 'Joe', 'Frank', 'Herb', 'April', 'Dustin', 'Brad', 'Paula', 'Ben', 'Nicole'];
     private nameIndex = Math.floor((Math.random() * this.names.length));
 
-    constructor(handlers: BaseCreepBehavior[]) {
+    constructor(handlers: Map<string, BaseCreepBehavior>) {
         this.handlers = handlers;
     }
 
-    private spawn() {
+    public spawn() {
         for (const name in Game.rooms) {
             this.spawnRoom(Game.rooms[name]);
         }

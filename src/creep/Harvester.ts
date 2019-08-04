@@ -1,4 +1,5 @@
 import { BaseCreepBehavior } from "./BaseCreepBehavior";
+import { CreepMem } from "./CreepMem";
 
 export class Harvester extends BaseCreepBehavior {
 
@@ -6,8 +7,7 @@ export class Harvester extends BaseCreepBehavior {
     return 1 - (this.Creeps.length / 4); // up to 4 harvesters, less important the more we have
   }
   public spawn(spawn: StructureSpawn, name: string): boolean {
-    const opts: SpawnOptions = {};
-    opts.memory = new CreepMem("harvester");
+    const opts: SpawnOptions = { memory: new CreepMem("harvester") };
     return OK === spawn.spawnCreep([WORK, CARRY, MOVE], name + " the Harvester", opts);
   }
 

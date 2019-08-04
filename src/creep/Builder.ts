@@ -1,4 +1,5 @@
 import { BaseCreepBehavior } from "./BaseCreepBehavior";
+import { CreepMem } from "./CreepMem";
 
 export class Builder extends BaseCreepBehavior {
 
@@ -6,8 +7,7 @@ export class Builder extends BaseCreepBehavior {
     return this.Creeps.length < 2 ? 0.5 : 0;
   }
   public spawn(spawn: StructureSpawn, name: string): boolean {
-    const opts: SpawnOptions = {};
-    opts.memory = new CreepMem("builder");
+    const opts: SpawnOptions = { memory: new CreepMem("builder") };
     return OK === spawn.spawnCreep([WORK, CARRY, MOVE], name + " the Builder", opts);
   }
 
